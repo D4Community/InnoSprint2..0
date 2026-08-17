@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#FAF9F5] text-[#18181B] font-sans antialiased transition-colors duration-200 selection:bg-[#FDE047] selection:text-[#18181B] dark:bg-[#0F0F12] dark:text-zinc-100;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes burstPop {
+  0% { transform: scale(0.3) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(15deg); opacity: 0.8; }
+  100% { transform: scale(1.8) rotate(30deg); opacity: 0; }
+}
+
+/* Utility Animation Classes */
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 28s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 28s linear infinite;
+}
+
+.animate-marquee-left:hover, .animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.click-burst-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  animation: burstPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stampBurst {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4) rotate(-12deg);
+    opacity: 1;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.15) rotate(4deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.45) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+.animate-stamp-burst {
+  animation: stampBurst 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
