@@ -14,12 +14,18 @@ const PARTNERS = [
 export default function CommunityPartnersPage() {
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* Devfolio Background Floating Art */}
+      {/* Devfolio Floating Background Art */}
       <div className="pointer-events-none absolute left-6 top-16 hidden w-12 animate-float xl:block z-20">
         <DevfolioArt.TealOrb />
       </div>
       <div className="pointer-events-none absolute right-8 top-20 hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "1.3s" }}>
         <DevfolioArt.BlueFin />
+      </div>
+      <div className="pointer-events-none absolute left-10 top-[380px] hidden w-28 animate-float xl:block z-20" style={{ animationDelay: "1.7s" }}>
+        <DevfolioArt.YellowCharacterFace />
+      </div>
+      <div className="pointer-events-none absolute right-12 bottom-20 hidden w-24 animate-float xl:block z-20" style={{ animationDelay: "2.2s" }}>
+        <DevfolioArt.YellowSmileBadge />
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 relative z-10 text-center">

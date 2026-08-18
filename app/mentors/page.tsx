@@ -13,12 +13,18 @@ const MENTORS = [
 export default function MentorsPage() {
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* Devfolio Background Floating Art */}
+      {/* Devfolio Floating Background Art */}
       <div className="pointer-events-none absolute left-6 top-16 hidden w-16 animate-float xl:block z-20">
         <DevfolioArt.BlueOrb />
       </div>
-      <div className="pointer-events-none absolute right-8 top-20 hidden w-24 animate-float xl:block z-20" style={{ animationDelay: "1.1s" }}>
+      <div className="pointer-events-none absolute right-8 top-20 hidden w-28 animate-float xl:block z-20" style={{ animationDelay: "1.1s" }}>
         <DevfolioArt.YellowSmileBadge />
+      </div>
+      <div className="pointer-events-none absolute left-10 top-[420px] hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "1.5s" }}>
+        <DevfolioArt.BlueFin />
+      </div>
+      <div className="pointer-events-none absolute right-12 bottom-16 hidden w-16 animate-float xl:block z-20" style={{ animationDelay: "1.9s" }}>
+        <DevfolioArt.TealOrb />
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 relative z-10 text-center">

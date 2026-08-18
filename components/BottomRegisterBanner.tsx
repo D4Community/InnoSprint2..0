@@ -44,7 +44,7 @@ export default function BottomRegisterBanner() {
               <Sparkles size={14} className="text-[#FF3B30] animate-pulse" />
             </div>
             <h4 className="mt-1 text-sm font-black tracking-tight leading-snug">
-              Registrations Are Open! 🚀
+              Registrations Are Open!
             </h4>
             <p className="mt-0.5 text-xs font-bold text-zinc-700 dark:text-zinc-300">
               24-Hour Sprint at CGC University · Oct 10–11, 2026.
@@ -66,7 +66,7 @@ export default function BottomRegisterBanner() {
                 data-cursor-text="DISMISS ✖"
                 className="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-[#18181B] bg-white px-3 py-1.5 text-xs font-black text-[#18181B] shadow-[2px_2px_0px_0px_#18181B] hover:-translate-y-0.5 transition-all active:translate-y-0 dark:border-white dark:bg-zinc-800 dark:text-white dark:shadow-[2px_2px_0px_0px_#FFF]"
               >
-                Close <X size={14} />
+                Close 
               </button>
             </div>
           </div>

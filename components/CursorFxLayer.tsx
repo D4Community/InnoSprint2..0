@@ -15,7 +15,7 @@ const STAMP_TEXTS = [
   "SPRINT! 🚀",
   "BUILD IT! 🛠️",
   "OCT 10-11 📅",
-  "CGC UNIV! 📍",
+  "CGC UNI! 📍",
 ];
 
 export default function CursorFxLayer() {
