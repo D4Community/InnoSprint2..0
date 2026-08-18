@@ -13,7 +13,7 @@ const STAMP_TEXTS = [
   "INNO 2.0 ⚡",
   "D4 COMMUNITY!",
   "SPRINT! 🚀",
-  "BUILD IT! 🛠️",
+  "BUILD IT!",
   "OCT 10-11 📅",
   "CGC UNI! 📍",
 ];
@@ -53,7 +53,6 @@ export default function CursorFxLayer() {
 
       if (interactiveEl) {
         setIsHovered(true);
-        // Automatically fetch explicit cursor text or extract link label
         const customText = interactiveEl.getAttribute("data-cursor-text");
         const elementText = interactiveEl.textContent?.trim().replace(/\s+/g, " ");
         const fallbackText =
@@ -71,13 +70,33 @@ export default function CursorFxLayer() {
     const handleMouseDown = (e: MouseEvent) => {
       setIsClicked(true);
 
-      // Create Neo-Brutalist Stamp Burst
-      const randomText = STAMP_TEXTS[Math.floor(Math.random() * STAMP_TEXTS.length)];
+      const target = e.target as HTMLElement | null;
+      const linkEl = target?.closest("a") as HTMLAnchorElement | null;
+      let stampText = "";
+
+      if (linkEl) {
+        const href = linkEl.getAttribute("href") || "";
+        
+        if (href === "/" || href === "") {
+          stampText = "HOME 🏠";
+        } else {
+          // Extract page name from URL path (e.g. "/about" -> "ABOUT", "/connect" -> "CONNECT")
+          const cleanPath = href.split("?")[0].split("#")[0];
+          const pathSegments = cleanPath.split("/").filter(Boolean);
+          const lastSegment = pathSegments.pop() || "PAGE";
+
+          stampText = `${lastSegment.toUpperCase()}`;
+        }
+      } else {
+        // Default random stamp for non-link clicks
+        stampText = STAMP_TEXTS[Math.floor(Math.random() * STAMP_TEXTS.length)];
+      }
+
       const newRipple: StampRipple = {
         id: Date.now() + Math.random(),
         x: e.clientX,
         y: e.clientY,
-        text: randomText,
+        text: stampText,
       };
 
       setRipples((prev) => [...prev.slice(-3), newRipple]);
@@ -110,7 +129,7 @@ export default function CursorFxLayer() {
         }}
       />
 
-      {/* Main Cursor Pointer - Expands to show Option Label */}
+      {/* Main Cursor Pointer */}
       <div
         className={`fixed top-0 left-0 flex items-center justify-center border-2 border-[#18181B] text-white transition-all duration-150 ease-out dark:border-white ${
           isHovered

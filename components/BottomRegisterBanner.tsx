@@ -63,7 +63,7 @@ export default function BottomRegisterBanner() {
               <button
                 type="button"
                 onClick={() => setIsVisible(false)}
-                data-cursor-text="DISMISS ✖"
+                data-cursor-text="DISMISS"
                 className="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-[#18181B] bg-white px-3 py-1.5 text-xs font-black text-[#18181B] shadow-[2px_2px_0px_0px_#18181B] hover:-translate-y-0.5 transition-all active:translate-y-0 dark:border-white dark:bg-zinc-800 dark:text-white dark:shadow-[2px_2px_0px_0px_#FFF]"
               >
                 Close 
