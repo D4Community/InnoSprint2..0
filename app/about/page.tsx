@@ -13,15 +13,21 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* Devfolio Background Floating Art */}
+      {/* Devfolio Floating Background Art */}
       <div className="pointer-events-none absolute left-6 top-16 hidden w-28 animate-float xl:block z-20">
         <DevfolioArt.YellowCharacterFace />
       </div>
       <div className="pointer-events-none absolute right-8 top-20 hidden w-24 animate-float xl:block z-20" style={{ animationDelay: "1s" }}>
         <DevfolioArt.BeigeStar />
       </div>
+      <div className="pointer-events-none absolute right-12 top-[450px] hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "1.4s" }}>
+        <DevfolioArt.BlueCrescent />
+      </div>
       <div className="pointer-events-none absolute left-10 bottom-24 hidden w-16 animate-float xl:block z-20" style={{ animationDelay: "1.6s" }}>
         <DevfolioArt.TealOrb />
+      </div>
+      <div className="pointer-events-none absolute right-10 bottom-12 hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "2s" }}>
+        <DevfolioArt.BlueFin />
       </div>
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 text-center relative z-10">
@@ -35,15 +41,6 @@ export default function AboutPage() {
           <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white -rotate-1 transition-transform hover:rotate-1">
             Builders
           </span>{" "}
-          {/* <span className="inline-flex items-center align-middle mx-1 -ml-2">
-            <Image
-              src="/assets/smiley.webp"
-              alt="Smiley"
-              width={48}
-              height={48}
-              className="w-8 h-8 sm:w-12 sm:h-12 object-contain"
-            />
-          </span>{" "} */}
           <span>
             with{" "}
             <span className="inline-block bg-[#FF3B30] text-white px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white rotate-1 hover:-rotate-1">

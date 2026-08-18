@@ -38,6 +38,7 @@ export default function Footer() {
               <li><Link href="/community-partners" className="hover:text-brand-red">Community Partners</Link></li>
               <li><Link href="/code-of-conduct" className="hover:text-brand-red">Code of Conduct</Link></li>
               <li><Link href="/terms" className="hover:text-brand-red">Terms &amp; Conditions</Link></li>
+              <li><Link href="/contact" className="hover:text-brand-red">Contact</Link> </li>
             </ul>
           </div>
 

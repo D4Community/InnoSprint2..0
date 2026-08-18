@@ -4,7 +4,7 @@ import { Sparkles, Shield, FileText, Scale } from "lucide-react";
 export default function TermsPage() {
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* Devfolio Background Floating Art */}
+      {/* Devfolio Floating Background Art */}
       <div className="pointer-events-none absolute left-6 top-16 hidden w-16 animate-float xl:block z-20">
         <DevfolioArt.BlueFin />
       </div>
@@ -13,6 +13,9 @@ export default function TermsPage() {
       </div>
       <div className="pointer-events-none absolute left-10 bottom-24 hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "1.5s" }}>
         <DevfolioArt.BlueCrescent />
+      </div>
+      <div className="pointer-events-none absolute right-12 bottom-12 hidden w-24 animate-float xl:block z-20" style={{ animationDelay: "2s" }}>
+        <DevfolioArt.BeigeStar />
       </div>
 
       <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8 relative z-10 text-center">

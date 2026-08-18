@@ -12,12 +12,18 @@ const SPONSORS_TIER = [
 export default function SponsorsPage() {
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* Devfolio Background Floating Art */}
+      {/* Devfolio Floating Background Art */}
       <div className="pointer-events-none absolute left-6 top-16 hidden w-28 animate-float xl:block z-20">
         <DevfolioArt.BeigeStar />
       </div>
       <div className="pointer-events-none absolute right-8 top-20 hidden w-28 animate-float xl:block z-20" style={{ animationDelay: "1s" }}>
         <DevfolioArt.YellowCharacterFace />
+      </div>
+      <div className="pointer-events-none absolute left-10 top-[400px] hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "1.5s" }}>
+        <DevfolioArt.BlueCrescent />
+      </div>
+      <div className="pointer-events-none absolute right-12 bottom-20 hidden w-16 animate-float xl:block z-20" style={{ animationDelay: "1.8s" }}>
+        <DevfolioArt.BlueOrb />
       </div>
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 text-center relative z-10">

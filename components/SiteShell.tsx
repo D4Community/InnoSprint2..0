@@ -179,7 +179,7 @@ export function Footer() {
           <div className="space-y-3 text-xs font-bold text-white/70">
             <p className="flex gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--yellow)]" />
-              CGC University, Landran, Greater Mohali, Punjab
+              CGC University, Jhanjeri, Greater Mohali, Punjab
             </p>
             <p className="flex gap-2">
               <CalendarDays className="mt-0.5 h-4 w-4 shrink-0 text-[var(--yellow)]" />

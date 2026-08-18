@@ -31,12 +31,18 @@ const FAQS = [
 export default function FAQPage() {
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* Devfolio Background Floating Art */}
+      {/* Devfolio Floating Background Art */}
       <div className="pointer-events-none absolute left-6 top-16 hidden w-16 animate-float xl:block z-20">
         <DevfolioArt.BlueCrescent />
       </div>
-      <div className="pointer-events-none absolute right-8 top-20 hidden w-24 animate-float xl:block z-20" style={{ animationDelay: "1.2s" }}>
+      <div className="pointer-events-none absolute right-8 top-20 hidden w-28 animate-float xl:block z-20" style={{ animationDelay: "1.2s" }}>
         <DevfolioArt.YellowSmileBadge />
+      </div>
+      <div className="pointer-events-none absolute left-10 top-[380px] hidden w-24 animate-float xl:block z-20" style={{ animationDelay: "1.6s" }}>
+        <DevfolioArt.BeigeStar />
+      </div>
+      <div className="pointer-events-none absolute right-12 bottom-16 hidden w-20 animate-float xl:block z-20" style={{ animationDelay: "2s" }}>
+        <DevfolioArt.BlueFin />
       </div>
 
       <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -47,7 +53,7 @@ export default function FAQPage() {
 
         <h1 className="mx-auto max-w-4xl text-4xl font-black leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
           Frequently Asked{" "}
-          <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white -rotate-1 hover:-rotate-2">
+          <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white -rotate-1 hover:rotate-2">
             Questions
           </span>
         </h1>
