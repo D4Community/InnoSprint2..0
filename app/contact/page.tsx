@@ -76,7 +76,9 @@ export default function ContactPage() {
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [registeredAnswer, setRegisteredAnswer] = useState<null | "yes" | "no">(null);
+  const [registeredAnswer, setRegisteredAnswer] = useState<null | "yes" | "no">(
+    null,
+  );
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -101,7 +103,9 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to send message via mail service.");
+        throw new Error(
+          data.error || "Failed to send message via mail service.",
+        );
       }
 
       setFormStatus("success");
@@ -109,7 +113,7 @@ export default function ContactPage() {
     } catch (err: unknown) {
       setFormStatus("error");
       setErrorMessage(
-        err instanceof Error ? err.message : "An unexpected error occurred."
+        err instanceof Error ? err.message : "An unexpected error occurred.",
       );
     }
   };
@@ -177,7 +181,9 @@ export default function ContactPage() {
         </h1>
 
         <p className="mt-6 text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-xl max-w-2xl mx-auto leading-relaxed">
-          Need help registering your team, understanding open innovation guidelines, or sponsoring InnoSprint 2.0? Reach out to the D4 Community team directly.
+          Need help registering your team, understanding open innovation
+          guidelines, or sponsoring InnoSprint 2.0? Reach out to the D4
+          Community team directly.
         </p>
 
         {/* Quick Contact Cards */}
@@ -254,15 +260,25 @@ export default function ContactPage() {
               </h2>
             </div>
             <p className="text-xs font-bold text-zinc-500 dark:text-zinc-400 mb-6">
-              Fill in your details below and our organizing team will get back to you shortly.
+              Fill in your details below and our organizing team will get back
+              to you shortly.
             </p>
 
             {formStatus === "success" && !isModalOpen ? (
               <div className="rounded-2xl border-2 border-[#18181B] bg-[#26A192] p-8 text-center text-white dark:border-white">
-                <CheckCircle2 size={48} className="mx-auto mb-3 text-[#FDE047]" />
-                <h3 className="text-2xl font-black">Message Sent Successfully!</h3>
+                <CheckCircle2
+                  size={48}
+                  className="mx-auto mb-3 text-[#FDE047]"
+                />
+                <h3 className="text-2xl font-black">
+                  Message Sent Successfully!
+                </h3>
                 <p className="mt-2 text-xs font-bold leading-relaxed text-zinc-100 max-w-md mx-auto">
-                  Thank you for reaching out, <strong className="text-[#FDE047]">{formData.name}</strong>. An organizer from D4 Community will reply to <strong className="text-[#FDE047]">{formData.email}</strong> shortly.
+                  Thank you for reaching out,{" "}
+                  <strong className="text-[#FDE047]">{formData.name}</strong>.
+                  An organizer from D4 Community will reply to{" "}
+                  <strong className="text-[#FDE047]">{formData.email}</strong>{" "}
+                  shortly.
                 </p>
                 <button
                   type="button"
@@ -376,7 +392,8 @@ export default function ContactPage() {
                 >
                   {formStatus === "submitting" ? (
                     <>
-                      <RefreshCw size={16} className="animate-spin" /> Dispatching Mail...
+                      <RefreshCw size={16} className="animate-spin" />{" "}
+                      Dispatching Mail...
                     </>
                   ) : (
                     <>
@@ -395,7 +412,9 @@ export default function ContactPage() {
               <span className="rounded-md bg-[#18181B] px-2.5 py-0.5 text-[10px] font-black uppercase text-[#FDE047]">
                 Hackathon Event Venue
               </span>
-              <h3 className="mt-3 text-2xl font-black">CGC University Campus</h3>
+              <h3 className="mt-3 text-2xl font-black">
+                CGC University Campus
+              </h3>
               <p className="mt-2 text-xs font-bold text-zinc-800 dark:text-zinc-300 leading-relaxed">
                 Jhanjeri, Mohali, Sector 112, Greater Mohali, Punjab 140307
               </p>
@@ -411,15 +430,16 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <a
-                href="https://maps.google.com"
+              <Link
+                href="https://maps.app.goo.gl/3wdWPg8o3wHqCYYz9"
                 target="_blank"
                 rel="noreferrer"
                 data-cursor-text="MAPS 📍"
-                className="mt-6 inline-flex items-center gap-2 rounded-2xl border-2 border-[#18181B] bg-white px-5 py-3 text-xs font-black text-[#18181B] shadow-[3px_3px_0px_0px_#18181B] hover:-translate-y-0.5 transition-all dark:border-white dark:bg-zinc-800 dark:text-white"
+                className="mt-6 inline-flex items-center gap-2 rounded-2xl border-2 border-[#18181B] bg-white px-5 py-3 text-xs font-black text-[#18181B] shadow-[3px_3px_0px_0px_#18181B] transition-all hover:-translate-y-0.5 dark:border-white dark:bg-zinc-800 dark:text-white"
               >
-                <MapPin size={16} className="text-[#FF3B30]" /> Directions to Venue
-              </a>
+                <MapPin size={16} className="text-[#FF3B30]" /> Directions to
+                Venue
+              </Link>
             </div>
 
             {/* Quick FAQ Link Card */}
@@ -431,7 +451,8 @@ export default function ContactPage() {
                 </h3>
               </div>
               <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
-                Check our knowledgebase for details on eligibility, outstation accommodation, free food, and team size limits.
+                Check our knowledgebase for details on eligibility, outstation
+                accommodation, free food, and team size limits.
               </p>
               <Link
                 href="/faq"
@@ -450,7 +471,10 @@ export default function ContactPage() {
           <div className="pointer-events-none absolute left-4 top-4 hidden sm:block w-16 animate-float opacity-80 z-0">
             <DevfolioArt.BlueFin />
           </div>
-          <div className="pointer-events-none absolute right-4 bottom-4 hidden sm:block w-20 animate-float opacity-80 z-0" style={{ animationDelay: "1s" }}>
+          <div
+            className="pointer-events-none absolute right-4 bottom-4 hidden sm:block w-20 animate-float opacity-80 z-0"
+            style={{ animationDelay: "1s" }}
+          >
             <DevfolioArt.BeigeStar />
           </div>
 
@@ -462,7 +486,8 @@ export default function ContactPage() {
               Ready to Turn Ideas Into Reality?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base font-bold text-zinc-800 dark:text-zinc-300 leading-relaxed">
-              Assemble your team of 2 to 4 hackers and claim your spot for October 10th & 11th at CGC University.
+              Assemble your team of 2 to 4 hackers and claim your spot for
+              October 10th & 11th at CGC University.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -471,12 +496,17 @@ export default function ContactPage() {
                 data-cursor-text="JOIN NOW ⚡"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl border-2 border-[#18181B] bg-[#FF3B30] px-8 py-4 text-base font-black text-white shadow-[4px_4px_0px_0px_#18181B] hover:-translate-y-0.5 transition-all dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF]"
               >
-                <Zap size={20} /> Register Your Team Now <ArrowRight size={18} />
+                <Zap size={20} /> Register Your Team Now{" "}
+                <ArrowRight size={18} />
               </Link>
             </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs font-black text-[#18181B] dark:text-white">
-              {["100% Free Entry", "Meals Provided", "24/7 Security & Rest Bays"].map((t) => (
+              {[
+                "100% Free Entry",
+                "Meals Provided",
+                "24/7 Security & Rest Bays",
+              ].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
                   <ShieldCheck size={16} className="text-[#FF3B30]" /> {t}
                 </span>
@@ -511,7 +541,13 @@ export default function ContactPage() {
 
             {/* Thank You Body */}
             <p className="mt-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              Thank you, <strong className="text-[#FF3B30]">{formData.name}</strong>! We have received your message regarding <strong className="underline">{formData.category}</strong>. Our team will email you back at <strong className="text-[#26A192]">{formData.email}</strong> shortly.
+              Thank you,{" "}
+              <strong className="text-[#FF3B30]">{formData.name}</strong>! We
+              have received your message regarding{" "}
+              <strong className="underline">{formData.category}</strong>. Our
+              team will email you back at{" "}
+              <strong className="text-[#26A192]">{formData.email}</strong>{" "}
+              shortly.
             </p>
 
             {/* Dynamic Content: "General Inquiry" vs Normal */}
@@ -521,12 +557,14 @@ export default function ContactPage() {
                   <Sparkles size={16} /> Quick Question
                 </p>
                 <p className="text-xs font-bold text-zinc-800 mb-4 leading-snug">
-                  Have you registered your team for InnoSprint 2.0 by D4 Community yet?
+                  Have you registered your team for InnoSprint 2.0 by D4
+                  Community yet?
                 </p>
 
                 {registeredAnswer === "yes" ? (
                   <div className="rounded-xl border-2 border-[#18181B] bg-white p-3 text-xs font-black text-[#26A192] flex items-center gap-2">
-                    <UserCheck size={18} /> Awesome! We look forward to seeing you on Oct 10th! 🚀
+                    <UserCheck size={18} /> Awesome! We look forward to seeing
+                    you on Oct 10th! 🚀
                   </div>
                 ) : (
                   <div className="flex flex-col sm:flex-row gap-2">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
 import { DevfolioArt } from "@/components/DevfolioArt";
 import {
   MapPin,
@@ -50,7 +51,11 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
     title: "Registration & Hacker Onboarding",
     category: "Ceremony",
     desc: "Check-in at the desk, collect your hacker badges, exclusive Devfolio swag kits, and food coupons.",
-    deliverables: ["Collect ID Badge & Wristband", "Claim Hackathon Swag Bag", "Verify Discord Role"],
+    deliverables: [
+      "Collect ID Badge & Wristband",
+      "Claim Hackathon Swag Bag",
+      "Verify Discord Role",
+    ],
     date: "Oct 10, 2026",
     day: "Day 1",
     time: "07:30 AM - 10:00 AM",
@@ -65,7 +70,11 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
     title: "Grand Inauguration & Keynote",
     category: "Ceremony",
     desc: "Opening ceremony with problem statement drops, sponsor track reveals, rules briefing, and mentor intros.",
-    deliverables: ["Problem Statement Release", "Track & API Key Access", "Safety & Rules Orientation"],
+    deliverables: [
+      "Problem Statement Release",
+      "Track & API Key Access",
+      "Safety & Rules Orientation",
+    ],
     date: "Oct 10, 2026",
     day: "Day 1",
     time: "10:00 AM - 10:45 AM",
@@ -96,7 +105,11 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
     title: "Mentoring Round 1: Architecture Check",
     category: "Mentoring",
     desc: "Domain experts conduct 1-on-1 desk visits to evaluate team architecture, scope, and technical viability.",
-    deliverables: ["Architecture Review", "API Integration Greenlight", "Scope Boundary Lockdown"],
+    deliverables: [
+      "Architecture Review",
+      "API Integration Greenlight",
+      "Scope Boundary Lockdown",
+    ],
     date: "Oct 10, 2026",
     day: "Day 1",
     time: "02:00 PM - 05:00 PM",
@@ -127,7 +140,11 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
     title: "Mentoring Round 2: Progress & Pivot",
     category: "Mentoring",
     desc: "Mentors review live code repos, UI wireframes, and help resolve blocker bugs before nightfall.",
-    deliverables: ["Live Code Sync", "UI/UX Prototype Review", "Debug & Pivot Guidance"],
+    deliverables: [
+      "Live Code Sync",
+      "UI/UX Prototype Review",
+      "Debug & Pivot Guidance",
+    ],
     date: "Oct 10, 2026",
     day: "Day 1",
     time: "06:15 PM - 08:00 PM",
@@ -172,7 +189,11 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
     title: "Evaluation Round 1: Midnight Blitz",
     category: "Presentation",
     desc: "Judges conduct preliminary screening at team booths. Working code and core demo required.",
-    deliverables: ["Working Demo Proof", "Git Repo Verification", "Pitch Deck Draft"],
+    deliverables: [
+      "Working Demo Proof",
+      "Git Repo Verification",
+      "Pitch Deck Draft",
+    ],
     date: "Oct 11, 2026",
     day: "Day 2",
     time: "01:00 AM - 05:00 AM",
@@ -203,7 +224,11 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
     title: "Grand Finale: Top 15 Pitches & Award Ceremony",
     category: "Presentation",
     desc: "The top 15 shortlisted teams present live on stage to the grand jury. Winners declared!",
-    deliverables: ["10-Min Live Stage Pitch", "Q&A with Jury", "Felicitation & Cash Prizes"],
+    deliverables: [
+      "10-Min Live Stage Pitch",
+      "Q&A with Jury",
+      "Felicitation & Cash Prizes",
+    ],
     date: "Oct 11, 2026",
     day: "Day 2",
     time: "10:30 AM - 02:00 PM",
@@ -216,16 +241,28 @@ const SPRINT_SCHEDULE: ScheduleItem[] = [
   },
 ];
 
-const CATEGORIES = ["All", "Ceremony", "Mentoring", "Presentation", "Social"] as const;
+const CATEGORIES = [
+  "All",
+  "Ceremony",
+  "Mentoring",
+  "Presentation",
+  "Social",
+] as const;
 
 export default function EventPage() {
-  const [viewMode, setViewMode] = useState<"stream" | "matrix" | "table">("stream");
-  const [selectedDay, setSelectedDay] = useState<"All" | "Day 1" | "Day 2">("All");
+  const [viewMode, setViewMode] = useState<"stream" | "matrix" | "table">(
+    "stream",
+  );
+  const [selectedDay, setSelectedDay] = useState<"All" | "Day 1" | "Day 2">(
+    "All",
+  );
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [scrubberHour, setScrubberHour] = useState<number>(8); // Hour scrubber state
   const [bookmarkedIds, setBookmarkedIds] = useState<number[]>([]);
-  const [activeModalItem, setActiveModalItem] = useState<ScheduleItem | null>(null);
+  const [activeModalItem, setActiveModalItem] = useState<ScheduleItem | null>(
+    null,
+  );
   const [showBookmarkedOnly, setShowBookmarkedOnly] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -239,23 +276,30 @@ export default function EventPage() {
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.location.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesBookmark = !showBookmarkedOnly || bookmarkedIds.includes(item.id);
+      const matchesBookmark =
+        !showBookmarkedOnly || bookmarkedIds.includes(item.id);
 
       return matchesDay && matchesCategory && matchesSearch && matchesBookmark;
     });
-  }, [selectedDay, selectedCategory, searchQuery, showBookmarkedOnly, bookmarkedIds]);
+  }, [
+    selectedDay,
+    selectedCategory,
+    searchQuery,
+    showBookmarkedOnly,
+    bookmarkedIds,
+  ]);
 
   const toggleBookmark = (id: number, e?: React.MouseEvent) => {
     e?.stopPropagation();
     setBookmarkedIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
   };
 
   const handleShare = (item: ScheduleItem, e?: React.MouseEvent) => {
     e?.stopPropagation();
     navigator.clipboard.writeText(
-      `Join me at "${item.title}" (${item.time}) at ${item.location}!`
+      `Join me at "${item.title}" (${item.time}) at ${item.location}!`,
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -287,7 +331,7 @@ export default function EventPage() {
         {/* HERO HEADER */}
         <header className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[3px_3px_0px_0px_#18181B] dark:border-white dark:bg-zinc-800 dark:shadow-[3px_3px_0px_0px_#FFF]">
-            <Sparkles size={14} className="text-[#FF3B30] animate-spin" />
+            <Sparkles size={14} className="text-[#FF3B30]" />
             24-Hour Command Center
           </div>
 
@@ -317,23 +361,29 @@ export default function EventPage() {
 
               <div className="flex flex-col items-center justify-center rounded-2xl border border-[#18181B] bg-[#FDE047]/20 p-3 dark:border-white/20">
                 <span className="text-[10px] font-black uppercase text-zinc-600 dark:text-zinc-400">
-                  Total Schedule
+                  Sprint Duration
                 </span>
-                <span className="mt-1 text-sm sm:text-base font-black">11 Key Sessions</span>
+                <span className="mt-1 text-sm sm:text-base font-black">
+                  24 Hours Non-Stop
+                </span>
               </div>
 
               <div className="flex flex-col items-center justify-center rounded-2xl border border-[#18181B] bg-[#26A192]/20 p-3 dark:border-white/20">
                 <span className="text-[10px] font-black uppercase text-zinc-600 dark:text-zinc-400">
                   Mentoring Track
                 </span>
-                <span className="mt-1 text-sm sm:text-base font-black text-[#26A192]">2 Rounds</span>
+                <span className="mt-1 text-sm sm:text-base font-black text-[#26A192]">
+                  2 Rounds
+                </span>
               </div>
 
               <div className="flex flex-col items-center justify-center rounded-2xl border border-[#18181B] bg-[#81A2EF]/20 p-3 dark:border-white/20">
                 <span className="text-[10px] font-black uppercase text-zinc-600 dark:text-zinc-400">
                   Evaluations
                 </span>
-                <span className="mt-1 text-sm sm:text-base font-black">2 Elimination Rounds</span>
+                <span className="mt-1 text-sm sm:text-base font-black">
+                  2 Elimination Rounds
+                </span>
               </div>
             </div>
           </div>
@@ -351,7 +401,8 @@ export default function EventPage() {
                   Interactive Time Scrubber
                 </h3>
                 <p className="text-xs font-bold text-zinc-500 dark:text-zinc-400">
-                  Drag the handle across the progress bar to highlight events happening around Hour {scrubberHour}
+                  Drag the handle across the progress bar to highlight events
+                  happening around Hour {scrubberHour}
                 </p>
               </div>
             </div>
@@ -470,7 +521,10 @@ export default function EventPage() {
             {/* Search Input & Bookmarks */}
             <div className="flex items-center gap-2 flex-1 max-w-md">
               <div className="relative flex-1">
-                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
+                <Search
+                  size={16}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400"
+                />
                 <input
                   type="text"
                   placeholder="Search session, mentor, room..."
@@ -488,7 +542,10 @@ export default function EventPage() {
                     : "bg-white text-[#18181B] dark:bg-zinc-800 dark:text-white"
                 }`}
               >
-                <Bookmark size={14} fill={showBookmarkedOnly ? "currentColor" : "none"} />
+                <Bookmark
+                  size={14}
+                  fill={showBookmarkedOnly ? "currentColor" : "none"}
+                />
                 <span>({bookmarkedIds.length})</span>
               </button>
             </div>
@@ -520,7 +577,9 @@ export default function EventPage() {
           {filteredSchedule.length === 0 ? (
             <div className="rounded-3xl border-2 border-dashed border-[#18181B] bg-white p-12 text-center dark:border-white dark:bg-zinc-900">
               <Zap size={36} className="mx-auto text-[#FF3B30]" />
-              <h3 className="mt-3 text-lg font-black">No matching events found</h3>
+              <h3 className="mt-3 text-lg font-black">
+                No matching events found
+              </h3>
               <p className="mt-1 text-xs font-bold text-zinc-500">
                 Try resetting your search filters or bookmarked items.
               </p>
@@ -545,7 +604,8 @@ export default function EventPage() {
                 const IconComponent = item.icon;
                 const isBookmarked = bookmarkedIds.includes(item.id);
                 const isScrubHighlighted =
-                  scrubberHour >= item.startHour && scrubberHour <= item.endHour;
+                  scrubberHour >= item.startHour &&
+                  scrubberHour <= item.endHour;
 
                 return (
                   <div
@@ -605,7 +665,10 @@ export default function EventPage() {
                               : "bg-white text-[#18181B] hover:bg-zinc-100 dark:bg-zinc-800 dark:text-white"
                           }`}
                         >
-                          <Bookmark size={16} fill={isBookmarked ? "currentColor" : "none"} />
+                          <Bookmark
+                            size={16}
+                            fill={isBookmarked ? "currentColor" : "none"}
+                          />
                         </button>
                       </div>
                     </div>
@@ -627,7 +690,9 @@ export default function EventPage() {
             /* MATRIX BOARD VIEW */
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {CATEGORIES.filter((c) => c !== "All").map((cat) => {
-                const categoryItems = filteredSchedule.filter((item) => item.category === cat);
+                const categoryItems = filteredSchedule.filter(
+                  (item) => item.category === cat,
+                );
 
                 return (
                   <div
@@ -635,7 +700,9 @@ export default function EventPage() {
                     className="rounded-3xl border-2 border-[#18181B] bg-white p-5 shadow-[6px_6px_0px_0px_#18181B] dark:border-white dark:bg-zinc-900 dark:shadow-[6px_6px_0px_0px_#FFF]"
                   >
                     <div className="flex items-center justify-between border-b-2 border-[#18181B] pb-3 dark:border-white">
-                      <h4 className="font-black text-sm uppercase tracking-wider">{cat}</h4>
+                      <h4 className="font-black text-sm uppercase tracking-wider">
+                        {cat}
+                      </h4>
                       <span className="rounded-full bg-[#FDE047] px-2 py-0.5 text-xs font-black text-[#18181B]">
                         {categoryItems.length}
                       </span>
@@ -664,7 +731,10 @@ export default function EventPage() {
                                 </span>
                               </div>
                               <h5 className="mt-1 text-sm font-black text-[#18181B] dark:text-white flex items-center gap-1.5">
-                                <IconComponent size={14} className="text-[#FF3B30]" />
+                                <IconComponent
+                                  size={14}
+                                  className="text-[#FF3B30]"
+                                />
                                 {item.title}
                               </h5>
                               <p className="mt-2 text-[11px] font-bold text-zinc-600 dark:text-zinc-400 line-clamp-2">
@@ -712,7 +782,9 @@ export default function EventPage() {
                           {item.category}
                         </span>
                       </td>
-                      <td className="p-4 text-zinc-600 dark:text-zinc-300">{item.location}</td>
+                      <td className="p-4 text-zinc-600 dark:text-zinc-300">
+                        {item.location}
+                      </td>
                       <td className="p-4 text-right">
                         <button className="rounded-xl border border-[#18181B] bg-white px-3 py-1 text-[11px] font-black text-[#18181B] shadow-[2px_2px_0px_0px_#18181B] dark:border-white dark:bg-zinc-800 dark:text-white">
                           Details
@@ -763,7 +835,10 @@ export default function EventPage() {
                 </h4>
                 <ul className="space-y-2">
                   {activeModalItem.deliverables.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-xs font-bold text-zinc-800 dark:text-zinc-200">
+                    <li
+                      key={idx}
+                      className="flex items-center gap-2 text-xs font-bold text-zinc-800 dark:text-zinc-200"
+                    >
                       <Check size={14} className="text-[#26A192]" />
                       {item}
                     </li>
@@ -778,7 +853,8 @@ export default function EventPage() {
                     <Clock size={15} /> {activeModalItem.time}
                   </span>
                   <span className="flex items-center gap-1 text-zinc-700 dark:text-zinc-300">
-                    <MapPin size={15} className="text-[#26A192]" /> {activeModalItem.location}
+                    <MapPin size={15} className="text-[#26A192]" />{" "}
+                    {activeModalItem.location}
                   </span>
                 </div>
 
@@ -798,8 +874,17 @@ export default function EventPage() {
                         : "bg-[#FDE047] text-[#18181B]"
                     }`}
                   >
-                    <Bookmark size={14} fill={bookmarkedIds.includes(activeModalItem.id) ? "currentColor" : "none"} />
-                    {bookmarkedIds.includes(activeModalItem.id) ? "Bookmarked" : "Bookmark"}
+                    <Bookmark
+                      size={14}
+                      fill={
+                        bookmarkedIds.includes(activeModalItem.id)
+                          ? "currentColor"
+                          : "none"
+                      }
+                    />
+                    {bookmarkedIds.includes(activeModalItem.id)
+                      ? "Bookmarked"
+                      : "Bookmark"}
                   </button>
                 </div>
               </div>
@@ -821,14 +906,16 @@ export default function EventPage() {
                 Jhanjeri, Mohali, Sector 112, Greater Mohali, Punjab 140307
               </p>
             </div>
-            <a
-              href="https://maps.google.com"
+            <Link
+              href="https://maps.app.goo.gl/3wdWPg8o3wHqCYYz9"
               target="_blank"
               rel="noreferrer"
+              data-cursor-text="MAPS 📍"
               className="inline-flex shrink-0 items-center gap-2 rounded-2xl border-2 border-[#18181B] bg-white px-6 py-3.5 text-xs font-black text-[#18181B] shadow-[4px_4px_0px_0px_#18181B] transition-all hover:-translate-y-0.5 dark:border-white dark:bg-zinc-800 dark:text-zinc-100 dark:shadow-[4px_4px_0px_0px_#FFF]"
             >
-              <MapPin size={16} className="text-[#FF3B30]" /> Open in Google Maps <ArrowUpRight size={14} />
-            </a>
+              <MapPin size={16} className="text-[#FF3B30]" /> Open in Google
+              Maps <ArrowUpRight size={14} />
+            </Link>
           </div>
         </section>
       </main>
