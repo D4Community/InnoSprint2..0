@@ -28,20 +28,26 @@ const NAV_LINKS = [
 ];
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
-  if (!mounted) return <div className="h-9 w-9 sm:h-10 sm:w-10" />;
+
+  if (!mounted) {
+    return <div className="h-9 w-9 sm:h-10 sm:w-10 shrink-0" />;
+  }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
       type="button"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      data-cursor-text={isDark ? "LIGHT" : "DARK"}
       className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-2xl border-2 border-[#18181B] bg-[#FDE047] text-[#18181B] shadow-[2px_2px_0px_0px_#18181B] transition-all hover:-translate-y-0.5 dark:border-white dark:bg-zinc-800 dark:text-zinc-100 dark:shadow-[2px_2px_0px_0px_#FFF] active:translate-y-0 shrink-0"
       aria-label="Toggle Theme"
     >
-      {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+      {isDark ? <Sun size={18} /> : <Moon size={18} />}
     </button>
   );
 }
@@ -81,6 +87,7 @@ export default function MarketingNav() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
+          data-cursor-text="HOME"
           className="flex items-center gap-2.5 transition-transform hover:-translate-y-0.5 active:translate-y-0 shrink-0 group"
           aria-label="InnoSprint 2.0 Home"
         >
@@ -110,6 +117,7 @@ export default function MarketingNav() {
               <Link
                 key={link.href}
                 href={link.href}
+                data-cursor-text={link.label.toUpperCase()}
                 className={`rounded-xl px-3 py-1.5 text-xs font-black transition-all ${
                   active
                     ? "bg-[#FDE047] text-[#18181B] border-2 border-[#18181B] shadow-[2px_2px_0px_0px_#18181B] -rotate-1 dark:shadow-[2px_2px_0px_0px_#FFF] dark:border-white"
@@ -127,6 +135,7 @@ export default function MarketingNav() {
           <ThemeToggle />
           <Link
             href="/event"
+            data-cursor-text="JOIN ⚡"
             className="inline-flex items-center gap-2 rounded-2xl bg-[#FF3B30] px-4 py-2.5 text-xs font-black text-white border-2 border-[#18181B] shadow-[3px_3px_0px_0px_#18181B] transition-all hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#18181B] active:translate-y-0 dark:border-white dark:shadow-[3px_3px_0px_0px_#FFF]"
           >
             <Zap size={15} /> Register Team <ArrowRight size={14} />
@@ -139,6 +148,7 @@ export default function MarketingNav() {
 
           <Link
             href="/event"
+            data-cursor-text="JOIN ⚡"
             className="inline-flex items-center gap-1 rounded-xl bg-[#FF3B30] px-2.5 py-1.5 text-[11px] font-black text-white border-2 border-[#18181B] shadow-[2px_2px_0px_0px_#18181B] active:translate-y-0.5 dark:border-white dark:shadow-[2px_2px_0px_0px_#FFF] sm:hidden"
           >
             <span>Register</span>
@@ -148,6 +158,7 @@ export default function MarketingNav() {
           <button
             type="button"
             aria-label="Open menu"
+            data-cursor-text="MENU ☰"
             onClick={() => setOpen(true)}
             className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-2xl border-2 border-[#18181B] bg-white text-[#18181B] shadow-[2px_2px_0px_0px_#18181B] hover:bg-[#FDE047] active:translate-y-0.5 transition-all dark:border-white dark:bg-zinc-800 dark:text-zinc-100 dark:shadow-[2px_2px_0px_0px_#FFF]"
           >
