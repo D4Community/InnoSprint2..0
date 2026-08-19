@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 interface StampRipple {
   id: number;
@@ -18,7 +19,32 @@ const STAMP_TEXTS = [
   "CGC UNI! 📍",
 ];
 
+// Helper to reliably walk up the DOM tree to detect any interactive parent
+const findInteractiveElement = (target: HTMLElement | null): HTMLElement | null => {
+  let el = target;
+  while (el && el !== document.body) {
+    const tagName = el.tagName?.toLowerCase();
+    const isLink = tagName === "a" || el.hasAttribute("href");
+    const isBtn = tagName === "button" || el.getAttribute("role") === "button" || tagName === "input";
+    const hasCustomText = el.hasAttribute("data-cursor-text");
+
+    if (isLink || isBtn || hasCustomText) {
+      return el;
+    }
+
+    try {
+      if (window.getComputedStyle(el).cursor === "pointer") {
+        return el;
+      }
+    } catch (_) {}
+
+    el = el.parentElement;
+  }
+  return null;
+};
+
 export default function CursorFxLayer() {
+  const pathname = usePathname();
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [trailPos, setTrailPos] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
@@ -26,6 +52,13 @@ export default function CursorFxLayer() {
   const [isClicked, setIsClicked] = useState(false);
   const [ripples, setRipples] = useState<StampRipple[]>([]);
   const requestRef = useRef<number | null>(null);
+
+  // Clear hover badge instantly upon changing pages/routes
+  useEffect(() => {
+    setIsHovered(false);
+    setHoverText("");
+    setIsClicked(false);
+  }, [pathname]);
 
   // Smooth trailing inertia loop
   useEffect(() => {
@@ -47,9 +80,8 @@ export default function CursorFxLayer() {
     const handleMouseMove = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
 
-      // Detect hover over interactive elements
       const target = e.target as HTMLElement | null;
-      const interactiveEl = target?.closest("a, button, input, [role='button']");
+      const interactiveEl = findInteractiveElement(target);
 
       if (interactiveEl) {
         setIsHovered(true);
@@ -71,23 +103,29 @@ export default function CursorFxLayer() {
     const handleMouseDown = (e: MouseEvent) => {
       setIsClicked(true);
 
+      // Instantly dismiss hover badge so it never lingers after click
+      setIsHovered(false);
+      setHoverText("");
+
       const target = e.target as HTMLElement | null;
-      const interactiveEl = target?.closest("a, button, input, [role='button']") as HTMLElement | null;
+      const interactiveEl = findInteractiveElement(target);
       let stampText = "";
 
       if (interactiveEl) {
-        // 1. Check for custom data attribute
+        // 1. Prioritize explicit data-cursor-text attribute
         const customCursorText = interactiveEl.getAttribute("data-cursor-text");
 
         if (customCursorText) {
           stampText = customCursorText;
         } else {
-          // 2. Check if clicked element or parent is an anchor / link
-          const linkEl = interactiveEl.closest("a") as HTMLAnchorElement | null;
+          // 2. Extract destination route from href if it's a Link or Anchor
+          const href =
+            interactiveEl.getAttribute("href") ||
+            interactiveEl.closest("a")?.getAttribute("href") ||
+            "";
 
-          if (linkEl) {
-            const href = linkEl.getAttribute("href") || "";
-            if (href === "/" || href === "") {
+          if (href) {
+            if (href === "/" || href === "#") {
               stampText = "HOME 🏠";
             } else {
               const cleanPath = href.split("?")[0].split("#")[0];
@@ -96,19 +134,19 @@ export default function CursorFxLayer() {
               stampText = lastSegment.replace(/[-_]/g, " ").toUpperCase();
             }
           } else {
-            // 3. Extracted button / interactive element text
+            // 3. Fallback to button/element visible text
             const btnText = interactiveEl.textContent?.trim().replace(/\s+/g, " ") || "";
             stampText = btnText ? btnText.toUpperCase() : "ACTION ⚡";
           }
         }
       } else {
-        // 4. Random stamp ONLY for clicks on blank page space
+        // 4. Random STAMP_TEXTS ONLY triggers when clicking blank, non-interactive page space
         stampText = STAMP_TEXTS[Math.floor(Math.random() * STAMP_TEXTS.length)];
       }
 
-      // Truncate ultra-long text to maintain crisp stamp size
-      if (stampText.length > 16) {
-        stampText = `${stampText.slice(0, 14)}...`;
+      // Keep stamp text legible and compact
+      if (stampText.length > 18) {
+        stampText = `${stampText.slice(0, 15)}...`;
       }
 
       const rippleId = Date.now() + Math.random();
@@ -121,7 +159,7 @@ export default function CursorFxLayer() {
 
       setRipples((prev) => [...prev.slice(-3), newRipple]);
 
-      // Remove ripple after 1 second animation duration
+      // Auto-remove ripple after 1 second animation duration
       setTimeout(() => {
         setRipples((prev) => prev.filter((r) => r.id !== rippleId));
       }, 1000);
@@ -129,14 +167,21 @@ export default function CursorFxLayer() {
 
     const handleMouseUp = () => setIsClicked(false);
 
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+      setHoverText("");
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
