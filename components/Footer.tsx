@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Rocket, MapPin, CalendarDays, Heart } from 'lucide-react';
+import Image from 'next/image';
+import { MapPin, CalendarDays, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,10 +10,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-3">
             <Link href="/" className="inline-flex items-center gap-2 group">
-              <div className="flex h-9 items-center justify-center rounded-xl border-2 border-white bg-brand-red px-3 shadow-brutal-white">
-                <Rocket size={16} className="text-white mr-1" />
-                <span className="font-black text-white text-xs tracking-wider">INNO 2.0</span>
-              </div>
+              <Image
+                src="/assets/innosprint 2.0.png"
+                alt="InnoSprint 2.0 Logo"
+                width={160}
+                height={40}
+                className="h-10 w-auto object-contain transition-transform group-hover:-translate-y-0.5"
+              />
             </Link>
             <p className="text-xs font-bold leading-relaxed text-zinc-400">
               National 24-hour hackathon by D4 Community. Hosted at CGC University campus on October 10th &amp; 11th, 2026.

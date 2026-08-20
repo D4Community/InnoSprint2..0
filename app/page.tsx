@@ -406,7 +406,7 @@ export default function Home() {
               InnoSprint 2.0
             </span>{" "}
             by{" "}
-            <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF]  -rotate-1 hover:rotate-2">
+            <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF] -rotate-1 hover:rotate-2">
               D4 Community
             </span>{" "}
             <span className="inline-flex items-center align-middle mx-1">
@@ -423,6 +423,18 @@ export default function Home() {
           <p className="mx-auto mt-8 max-w-2xl text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-xl leading-relaxed">
             24 hours of unrestricted innovation, rapid prototyping, and hands-on engineering at CGC University.
           </p>
+
+          {/* Main Event Logo */}
+          <div className="mt-6 flex justify-center">
+            <Image
+              src="/assets/innosprint 2.0.png"
+              alt="InnoSprint 2.0 Logo"
+              width={260}
+              height={75}
+              className="h-12 sm:h-20 w-auto object-contain"
+              priority
+            />
+          </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs font-black text-[#18181B] dark:text-white">
             <span className="flex items-center gap-1.5 rounded-xl border-2 border-[#18181B] bg-white px-3.5 py-2 shadow-[3px_3px_0px_0px_#18181B] dark:border-white dark:bg-zinc-800 dark:shadow-[3px_3px_0px_0px_#FFF]">

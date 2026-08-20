@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -9,12 +10,12 @@ import {
   Menu,
   X,
   ArrowRight,
-  Rocket,
   ChevronRight,
   Sparkles,
   Zap,
   Sun,
   Moon,
+  Rocket,
 } from "lucide-react";
 
 const NAV_LINKS = [
@@ -83,8 +84,26 @@ export default function MarketingNav() {
     <header className="sticky top-0 z-[100] border-b-2 border-[#18181B] bg-[#FAF9F5]/95 backdrop-blur-md select-none relative dark:border-white dark:bg-[#0F0F12]/95">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-3.5 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
         
-        {/* Logo & Brand Mark (Acts as Home) */}
+        {/* Logo Image (Acts as Home) */}
         <Link
+          href="/"
+          onClick={() => setOpen(false)}
+          data-cursor-text="HOME"
+          className="flex items-center transition-transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+          aria-label="InnoSprint 2.0 Home"
+        >
+          <Image
+            src="/assets/innosprint 2.0.png"
+            alt="InnoSprint 2.0 Logo"
+            data-cursor-text="InnoSprint 2.0"
+            width={160}
+            height={40}
+            className="h-9 sm:h-10 w-auto object-contain"
+            priority
+          />
+        </Link>
+
+        {/* <Link
           href="/"
           onClick={() => setOpen(false)}
           data-cursor-text="HOME"
@@ -107,7 +126,7 @@ export default function MarketingNav() {
               D4 Community
             </span>
           </div>
-        </Link>
+        </Link> */}
 
         {/* Desktop Navigation Links */}
         <nav className="hidden items-center gap-1.5 xl:flex">
@@ -194,24 +213,20 @@ export default function MarketingNav() {
               <div>
                 {/* Drawer Top Header */}
                 <div className="flex items-center justify-between border-b-2 border-[#18181B]/10 dark:border-white/10 pb-4 mb-5">
-                  <div className="flex items-center gap-2.5">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#FF3B30] text-white border-2 border-[#18181B] dark:border-white shadow-[2px_2px_0px_0px_#18181B] dark:shadow-[2px_2px_0px_0px_#FFF]">
-                      <Rocket className="h-5 w-5" />
-                    </div>
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-1">
-                        <span className="text-base font-black text-[#18181B] dark:text-white leading-none">
-                          InnoSprint
-                        </span>
-                        <span className="rounded bg-[#FDE047] px-1 py-0.5 text-[10px] font-black text-[#18181B] leading-none">
-                          2.0
-                        </span>
-                      </div>
-                      <span className="text-[9px] font-black text-[#FF3B30] dark:text-[#FDE047] uppercase mt-0.5">
-                        D4 Community
-                      </span>
-                    </div>
-                  </div>
+                  <Link
+                    href="/"
+                    onClick={() => setOpen(false)}
+                    aria-label="InnoSprint 2.0 Home"
+                    className="flex items-center"
+                  >
+                    <Image
+                      src="/assets/innosprint 2.0.png"
+                      alt="InnoSprint 2.0 Logo"
+                      width={140}
+                      height={36}
+                      className="h-8 w-auto object-contain"
+                    />
+                  </Link>
 
                   <button
                     type="button"
