@@ -1,5 +1,6 @@
-import { Trophy, Mail, Sparkles } from "lucide-react";
+import { Trophy, Mail, Sparkles, ArrowLeft, Clock } from "lucide-react";
 import { DevfolioArt } from "@/components/DevfolioArt";
+import Link from 'next/link';
 
 const SPONSORS_TIER = [
   { tier: "Title Sponsor", name: "CGC University & D4 Community", desc: "Premier hosting and infrastructure partner.", bg: "bg-[#FDE047] text-[#18181B]" },
@@ -27,7 +28,7 @@ export default function SponsorsPage() {
       </div>
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[4px_4px_0px_0px_#18181B] mb-8 dark:border-white dark:bg-zinc-800">
+        {/* <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[4px_4px_0px_0px_#18181B] mb-8 dark:border-white dark:bg-zinc-800">
           <Sparkles size={14} className="text-[#FF3B30]" />
           Ecosystem Backers
         </div>
@@ -41,9 +42,37 @@ export default function SponsorsPage() {
 
         <p className="mt-6 text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-lg max-w-2xl mx-auto">
           InnoSprint 2.0 is supported by visionary organizations committed to fostering student developer ecosystems across India.
+        </p> */}
+
+        {/* ------------ COMING SOON SECTION ----------- */}
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[3px_3px_0px_0px_#18181B] dark:border-white dark:bg-zinc-800 dark:shadow-[3px_3px_0px_0px_#FFF]">
+          <Clock size={14} className="text-[#FF3B30] animate-pulse" />
+          Under Construction
+        </div>
+
+        <h1 className="text-4xl font-black leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
+          Tech Sponsors{" "}
+          <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF] -rotate-1 mt-2 sm:mt-0">
+            Coming Soon!
+          </span>
+        </h1>
+
+        <p className="mt-6 text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-lg max-w-lg mx-auto leading-relaxed">
+          We are actively onboarding tech partners, cloud platforms, and developer ecosystems. Official sponsor announcements and track bounties will drop shortly!
         </p>
 
-        <div className="mt-14 space-y-6 text-left">
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Link
+            href="/"
+            data-cursor-text="HOME 🏠"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#18181B] bg-[#FF3B30] px-6 py-3 text-xs font-black text-white shadow-[3px_3px_0px_0px_#18181B] transition-all hover:-translate-y-0.5 active:translate-y-0 dark:border-white dark:shadow-[3px_3px_0px_0px_#FFF]"
+          >
+            <ArrowLeft size={16} /> Return to Homepage
+          </Link>
+        </div>
+        {/* --------------- END COMING SOON ------------- */}
+
+        {/* <div className="mt-14 space-y-6 text-left">
           {SPONSORS_TIER.map((s, i) => (
             <div
               key={i}
@@ -59,10 +88,10 @@ export default function SponsorsPage() {
               <Trophy size={32} className="text-[#FDE047] shrink-0 hidden sm:block" />
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Sponsor Us Callout */}
-        <div className="mt-16 rounded-3xl border-2 border-[#18181B] bg-[#18181B] p-8 text-white shadow-brutal-xl dark:border-white text-left">
+        {/* <div className="mt-16 rounded-3xl border-2 border-[#18181B] bg-[#18181B] p-8 text-white shadow-brutal-xl dark:border-white text-left">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <span className="rounded-md bg-[#FDE047] px-2 py-0.5 text-[10px] font-black text-[#18181B] uppercase">
@@ -81,7 +110,7 @@ export default function SponsorsPage() {
               <Mail size={16} /> Contact Sponsorship Team
             </a>
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );

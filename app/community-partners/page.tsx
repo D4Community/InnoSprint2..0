@@ -1,5 +1,5 @@
 import React from "react";
-import { ExternalLink, Sparkles } from "lucide-react";
+import { ExternalLink, Sparkles, Clock } from "lucide-react";
 import { DevfolioArt } from "@/components/DevfolioArt";
 
 const PARTNERS = [
@@ -29,7 +29,7 @@ export default function CommunityPartnersPage() {
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[4px_4px_0px_0px_#18181B] mb-8 dark:border-white dark:bg-zinc-800">
+        {/* <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[4px_4px_0px_0px_#18181B] mb-8 dark:border-white dark:bg-zinc-800">
           <Sparkles size={14} className="text-[#FF3B30]" />
           Student Ecosystem
         </div>
@@ -43,9 +43,9 @@ export default function CommunityPartnersPage() {
 
         <p className="mt-6 text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-lg max-w-xl mx-auto">
           InnoSprint 2.0 is supported by vibrant student communities and tech organizations.
-        </p>
+        </p> */}
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
+        {/* <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
           {PARTNERS.map((p) => (
             <div
               key={p.name}
@@ -64,7 +64,25 @@ export default function CommunityPartnersPage() {
               </div>
             </div>
           ))}
+        </div> */}
+ {/* ------------ COMING Soon----------- */}
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[3px_3px_0px_0px_#18181B] dark:border-white dark:bg-zinc-800 dark:shadow-[3px_3px_0px_0px_#FFF]">
+          <Clock size={14} className="text-[#FF3B30] animate-pulse" />
+          Under Construction
         </div>
+
+        <h1 className="text-4xl font-black leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
+          Partners Ecosystem{" "}
+          <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF] -rotate-1 mt-2 sm:mt-0">
+            Coming Soon!
+          </span>
+        </h1>
+
+        <p className="mt-6 text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-lg max-w-lg mx-auto leading-relaxed">
+          We are in active discussions with premier student communities, tech clubs, and ecosystem builders. Official announcements will drop shortly!
+        </p>
+        {/* ---------------END------------- */}
+
       </section>
     </div>
   );

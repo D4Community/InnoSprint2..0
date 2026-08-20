@@ -256,7 +256,7 @@ export default function CodeOfConductPage() {
                 <Mail size={18} /> Email Organizing Team
               </a>
               <div className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#18181B] bg-white px-6 py-4 text-sm font-black text-[#18181B] dark:border-white dark:bg-zinc-800 dark:text-white">
-                <PhoneCall size={18} className="text-[#FF3B30]" /> Direct Hotline: +91 98765 00011
+                <PhoneCall size={18} className="text-[#FF3B30]" /> Direct Hotline: +91 96936 28301
               </div>
               {/* <div className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#18181B] bg-white px-6 py-4 text-sm font-black text-[#18181B] dark:border-white dark:bg-zinc-800 dark:text-white">
                 <MapPin size={18} className="text-[#26A192]" /> Helpdesk: Main Atrium

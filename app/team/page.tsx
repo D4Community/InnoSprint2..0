@@ -1,5 +1,6 @@
-import { Github, Linkedin, Sparkles } from "lucide-react";
+import { Github, Linkedin, Sparkles, ArrowLeft, Clock } from "lucide-react";
 import { DevfolioArt } from "@/components/DevfolioArt";
+import Link from "next/link";
 
 const TEAM = [
   { name: "Aarav Sharma", role: "Lead Organizer", dept: "Core Team", bg: "bg-[#FDE047]", text: "text-[#18181B]" },
@@ -30,7 +31,7 @@ export default function TeamPage() {
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[4px_4px_0px_0px_#18181B] mb-8 dark:border-white dark:bg-zinc-800">
+        {/* <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[4px_4px_0px_0px_#18181B] mb-8 dark:border-white dark:bg-zinc-800">
           <Sparkles size={14} className="text-[#FF3B30]" />
           D4 Community Team
         </div>
@@ -70,7 +71,35 @@ export default function TeamPage() {
               </div>
             </div>
           ))}
+        </div> */}
+
+        {/* ------------ COMING SOON SECTION ----------- */}
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-[#18181B] bg-white px-4 py-1.5 text-xs font-black shadow-[3px_3px_0px_0px_#18181B] dark:border-white dark:bg-zinc-800 dark:shadow-[3px_3px_0px_0px_#FFF]">
+          <Clock size={14} className="text-[#FF3B30] animate-pulse" />
+          Under Construction
         </div>
+
+        <h1 className="text-4xl font-black leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
+          Organizing Team{" "}
+          <span className="inline-block bg-[#FDE047] text-[#18181B] px-3.5 py-1 rounded-2xl border-2 border-[#18181B] shadow-[4px_4px_0px_0px_#18181B] dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF] -rotate-1 mt-2 sm:mt-0">
+            Coming Soon!
+          </span>
+        </h1>
+
+        <p className="mt-6 text-base font-bold text-zinc-700 dark:text-zinc-300 sm:text-lg max-w-lg mx-auto leading-relaxed">
+          The team behind InnoSprint 2.0 is hard at work setting up an incredible hackathon experience. Official team reveals will be available shortly!
+        </p>
+
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Link
+            href="/"
+            data-cursor-text="HOME 🏠"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#18181B] bg-[#FF3B30] px-6 py-3 text-xs font-black text-white shadow-[3px_3px_0px_0px_#18181B] transition-all hover:-translate-y-0.5 active:translate-y-0 dark:border-white dark:shadow-[3px_3px_0px_0px_#FFF]"
+          >
+            <ArrowLeft size={16} /> Return to Homepage
+          </Link>
+        </div>
+        {/* --------------- END COMING SOON ------------- */}
       </section>
     </div>
   );
