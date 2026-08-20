@@ -44,7 +44,7 @@ const DIRECT_CONTACTS = [
   },
   {
     type: "Helpline Number",
-    value: "+91 98765 00011",
+    value: "+91 96936 28301",
     sub: "Live 24/7 during event days",
     icon: Phone,
     bg: "bg-[#FF3B30]",
