@@ -914,7 +914,7 @@ export default function Home() {
               <Link
                 href="/event"
                 data-cursor-text="JOIN NOW ⚡"
-                className="inline-flex items-center justify-center gap-3 rounded-2xl border-2 border-[#18181B] bg-[#FF3B30] px-8 py-4 text-base font-black text-white shadow-[4px_4px_0px_0px_#18181B] hover:-translate-y-0.5 transition-all dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF]"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-[#18181B] bg-[#FF3B30] px-8 py-4 text-base font-black text-white shadow-[4px_4px_0px_0px_#18181B] hover:-translate-y-0.5 transition-all dark:border-white dark:shadow-[4px_4px_0px_0px_#FFF]"
               >
                 <Zap size={20} /> Register Your Team Now <ArrowRight size={18} />
               </Link>
